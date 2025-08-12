@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DOXA - Connecting Verified Engineers with Startups That Need Them">
+    <meta name="keywords" content="freelance engineers, startup talent, verified engineers, temporary tech talent">
+    <meta name="author" content="Akhilesh Ks">
+    <title>DOXA - Connecting Verified Engineers with Startups</title>
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="DOXA - Connecting Verified Engineers with Startups">
+    <meta property="og:description" content="DOXA bridges the gap between talented engineers and startups seeking temporary skilled workers for projects.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://doxa.vercel.app">
+    <meta property="og:image" content="https://picsum.photos/seed/doxa-og/1200/630.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #0a2463;
+            --primary-dark: #061538;
+            --primary-light: #1e3a5f;
+            --secondary: #3ec1d3;
+            --secondary-dark: #2a9ca8;
+            --accent: #ffbe0b;
+            --accent-dark: #e6a800;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #495057;
+            --text-gray: #6c757d;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 8px;
+            --max-width: 1200px;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 90%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        h4 {
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-gray);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--secondary-dark);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--secondary-dark);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover:before {
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-outline:before {
+            background-color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            color: var(--white);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+        }
+
+        .btn-accent:before {
+            background-color: var(--accent-dark);
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: var(--accent);
+            margin-right: 8px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            margin-left: 30px;
+        }
+
+        .nav-link {
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+            border-radius: 3px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 180px 0 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeInUp 0.8s 0.2s ease forwards;
+            opacity: 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s 0.4s ease forwards;
+            opacity: 0;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background-color: var(--light-gray);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .step {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--secondary);
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .step:hover .step-icon {
+            transform: scale(1.1);
+            color: var(--secondary-dark);
+        }
+
+        .step h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: start;
+        }
+
+        .about-text {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .founder {
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .founder:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background-color: var(--accent);
+            opacity: 0.1;
+            border-radius: 0 0 0 100%;
+        }
+
+        .founder-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .founder-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 20px;
+            object-fit: cover;
+            border: 4px solid var(--white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .verification-process {
+            margin-top: 40px;
+        }
+
+        .verification-steps {
+            margin-top: 30px;
+        }
+
+        .verification-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .verification-step:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .verification-step i {
+            color: var(--secondary);
+            margin-right: 15px;
+            font-size: 1.5rem;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .verification-step h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-form {
+            background-color: var(--light-gray);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--medium-gray);
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(62, 193, 211, 0.2);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-right: 15px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(62, 193, 211, 0.1);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Job Requests Section */
+        .job-listings {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .job-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            padding: 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .job-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--accent);
+        }
+
+        .job-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .job-title {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-right: 30px;
+        }
+
+        .job-details {
+            margin-bottom: 25px;
+        }
+
+        .job-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .job-detail i {
+            color: var(--secondary);
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .job-description {
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .skill-tag {
+            background-color: var(--light-gray);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+
+        /* Engineer Profiles Section */
+        .engineer-profiles {
+            background-color: var(--light-gray);
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .profile-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .profile-header {
+            position: relative;
+            padding: 30px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 5px solid var(--white);
+            object-fit: cover;
+            box-shadow: var(--shadow-md);
+        }
+
+        .verified-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: var(--white);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .profile-name {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .profile-title {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0;
+        }
+
+        .profile-body {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .profile-experience {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-top: auto;
+        }
+
+        .profile-actions {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Matching Algorithm Section */
+        .algorithm-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .algorithm-intro {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+            color: var(--text-gray);
+        }
+
+        .algorithm-steps {
+            margin-top: 50px;
+        }
+
+        .algorithm-step {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            transition: var(--transition);
+            border-left: 5px solid var(--secondary);
+        }
+
+        .algorithm-step:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .algorithm-step h3 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .algorithm-step h3 i {
+            color: var(--secondary);
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 80px 0 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 16px 24px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            max-width: 350px;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .notification i {
+            margin-right: 15px;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .section {
+                padding: 80px 0;
+            }
+            
+            .hero {
+                padding: 150px 0 100px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: var(--transition);
+                box-shadow: var(--shadow-lg);
+                padding: 20px 0;
+                border-radius: 0 0 var(--border-radius) var(--border-radius);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 10px 0;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .job-listings,
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            .contact-form {
+                padding: 25px;
+            }
+            
+            .notification {
+                right: 15px;
+                left: 15px;
+                max-width: none;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--light-gray);
+            border-top-color: var(--secondary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 50px auto;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo">
+                <i class="fas fa-bolt"></i>
+                DOXA
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#jobs" class="nav-link">Job Requests</a></li>
+                <li class="nav-item"><a href="#engineers" class="nav-link">Engineers</a></li>
+                <li class="nav-item"><a href="#algorithm" class="nav-link">How We Match</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Connecting Verified Engineers with Startups That Need Them</h1>
+            <p>DOXA bridges the gap between talented engineers and startups seeking temporary skilled workers for projects, creating opportunities for growth and innovation.</p>
+            <div class="hero-buttons">
+                <a href="#jobs" class="btn">Hire Talent</a>
+                <a href="#engineers" class="btn btn-outline">Find Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How DOXA Works</h2>
+            </div>
+            <div class="steps">
+                <div class="step fade-in">
+                    <div class="step-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>Verification</h3>
+                    <p>We thoroughly verify engineer profiles to ensure skills, experience, and qualifications are legitimate and up-to-date.</p>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Matching</h3>
+                    <p>Our algorithm matches engineers with startups based on skills, project requirements, and availability.</p>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Collaboration</h3>
+                    <p>Engineers and startups collaborate on projects with clear terms, timelines, and expectations for success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>About DOXA</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h3>About Us</h3>
+                    <p>Welcome to DOXA — a smart platform connecting skilled freelance and job-seeking engineers with startups and businesses in need of project-based expertise.</p>
+                    <p>Founded by Akhilesh K.S, DOXA was built with a clear vision:</p>
+                    <ul style="margin-bottom:20px;">
+                        <li><strong>For Engineers:</strong> Showcase your skills, get your profile verified, and find the right projects that match your talents.</li>
+                        <li><strong>For Startups & Businesses:</strong> Access qualified professionals without the cost and commitment of full-time hires. Ideal for startups that need talent on demand.</li>
+                    </ul>
+                    <p>We believe in creating opportunities, building trust, and helping great ideas come to life.</p>
+                    <p>📧 Email: <a href="mailto:doxaepoch@gmail.com">doxaepoch@gmail.com</a></p>
+                    <div class="founder">
+                        <div class="founder-info">
+                            <img src="https://picsum.photos/seed/akhilesh/100/100.jpg" alt="Akhilesh Ks" class="founder-img">
+                            <div>
+                                <h4>Akhilesh Ks</h4>
+                                <p>Founder & CEO</p>
+                            </div>
+                        </div>
+                        <p>
+                            Akhilesh is currently an engineering student specializing in Artificial Intelligence in Computer Science and Engineering (CSE). 
+                            Driven by a passion for technology and innovation, he created DOXA to help fellow engineers and startups connect for project-based opportunities. 
+                            Akhilesh understands the challenges students and professionals face in finding meaningful work and the need for startups to access skilled talent flexibly. 
+                            His goal is to build a transparent, reliable platform that empowers both engineers and businesses to succeed together.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="about-text fade-in">
+                    <div class="verification-process">
+                        <h3>Profile Verification Process</h3>
+                        <p>At DOXA, we take verification seriously to ensure the quality and reliability of our engineer profiles. Our multi-step process includes:</p>
+                        
+                        <div class="verification-steps">
+                            <div class="verification-step">
+                                <i class="fas fa-id-card"></i>
+                                <div>
+                                    <h4>Identity Verification</h4>
+                                    <p>Engineers must provide valid identification to confirm their identity.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="verification-step">
+                                <i class="fas fa-certificate"></i>
+                                <div>
+                                    <h4>Credential Verification</h4>
+                                    <p>We verify educational qualifications, certifications, and employment history.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="verification-step">
+                                <i class="fas fa-tasks"></i>
+                                <div>
+                                    <h4>Skills Assessment</h4>
+                                    <p>Engineers complete skills tests or provide portfolio evidence of their expertise.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="verification-step">
+                                <i class="fas fa-comments"></i>
+                                <div>
+                                    <h4>Reference Checks</h4>
+                                    <p>We contact professional references to validate work experience and performance.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="verification-step">
+                                <i class="fas fa-star"></i>
+                                <div>
+                                    <h4>Ongoing Quality Assurance</h4>
+                                    <p>Post-project reviews and continuous monitoring ensure quality standards are maintained.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Requests Section -->
+    <section id="jobs" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Temporary Job Requests</h2>
+            </div>
+            <div class="job-listings">
+                <div class="job-card fade-in">
+                    <h3 class="job-title">Frontend Developer</h3>
+                    <div class="job-details">
+                        <div class="job-detail">
+                            <i class="fas fa-clock"></i>
+                            <span>Duration: 3 months</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Remote</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span>$50-70/hour</span>
+                        </div>
+                    </div>
+                    <p class="job-description">Looking for a React developer to help build a new customer dashboard for our SaaS platform.</p>
+                    <div class="skills">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">Redux</span>
+                    </div>
+                </div>
+                
+                <div class="job-card fade-in">
+                    <h3 class="job-title">Backend API Specialist</h3>
+                    <div class="job-details">
+                        <div class="job-detail">
+                            <i class="fas fa-clock"></i>
+                            <span>Duration: 2 months</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Remote</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span>$60-80/hour</span>
+                        </div>
+                    </div>
+                    <p class="job-description">Need an experienced Node.js developer to build and optimize RESTful APIs for our mobile app backend.</p>
+                    <div class="skills">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">AWS</span>
+                    </div>
+                </div>
+                
+                <div class="job-card fade-in">
+                    <h3 class="job-title">DevOps Engineer</h3>
+                    <div class="job-details">
+                        <div class="job-detail">
+                            <i class="fas fa-clock"></i>
+                            <span>Duration: 1 month</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Hybrid (San Francisco)</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span>$70-90/hour</span>
+                        </div>
+                    </div>
+                    <p class="job-description">Seeking a DevOps specialist to set up CI/CD pipelines and optimize our cloud infrastructure.</p>
+                    <div class="skills">
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">AWS</span>
+                    </div>
+                </div>
+                
+                <div class="job-card fade-in">
+                    <h3 class="job-title">UI/UX Designer</h3>
+                    <div class="job-details">
+                        <div class="job-detail">
+                            <i class="fas fa-clock"></i>
+                            <span>Duration: 6 weeks</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Remote</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span>$45-65/hour</span>
+                        </div>
+                    </div>
+                    <p class="job-description">Looking for a creative designer to redesign our mobile app interface and improve user experience.</p>
+                    <div class="skills">
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Adobe XD</span>
+                        <span class="skill-tag">Prototyping</span>
+                        <span class="skill-tag">User Research</span>
+                    </div>
+                </div>
+                
+                <div class="job-card fade-in">
+                    <h3 class="job-title">Data Scientist</h3>
+                    <div class="job-details">
+                        <div class="job-detail">
+                            <i class="fas fa-clock"></i>
+                            <span>Duration: 4 months</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Remote</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span>$70-100/hour</span>
+                        </div>
+                    </div>
+                    <p class="job-description">Need a data scientist to build predictive models and analyze user behavior patterns for our platform.</p>
+                    <div class="skills">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">TensorFlow</span>
+                    </div>
+                </div>
+                
+                <div class="job-card fade-in">
+                    <h3 class="job-title">Mobile App Developer</h3>
+                    <div class="job-details">
+                        <div class="job-detail">
+                            <i class="fas fa-clock"></i>
+                            <span>Duration: 3 months</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Remote</span>
+                        </div>
+                        <div class="job-detail">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span>$55-75/hour</span>
+                        </div>
+                    </div>
+                    <p class="job-description">Looking for an experienced React Native developer to build and maintain our cross-platform mobile application.</p>
+                    <div class="skills">
+                        <span class="skill-tag">React Native</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">iOS</span>
+                        <span class="skill-tag">Android</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engineer Profiles Section -->
+    <section id="engineers" class="section engineer-profiles">
+        <div class="container">
+            <div class="section-title">
+                <h2>Verified Engineer Profiles</h2>
+            </div>
+            <div class="profile-grid">
+                <div class="profile-card fade-in">
+                    <div class="profile-header">
+                        <img src="https://picsum.photos/seed/engineer1/100/100.jpg" alt="Sarah Johnson" class="profile-img">
+                        <div class="verified-badge">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h3 class="profile-name">Sarah Johnson</h3>
+                        <p class="profile-title">Senior Frontend Developer</p>
+                    </div>
+                    <div class="profile-body">
+                        <div class="profile-skills">
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">Redux</span>
+                        </div>
+                        <p class="profile-experience">7 years of experience building responsive web applications for startups and Fortune 500 companies.</p>
+                        <div class="profile-actions">
+                            <a href="#" class="btn btn-outline">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-card fade-in">
+                    <div class="profile-header">
+                        <img src="https://picsum.photos/seed/engineer2/100/100.jpg" alt="Michael Chen" class="profile-img">
+                        <div class="verified-badge">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h3 class="profile-name">Michael Chen</h3>
+                        <p class="profile-title">Backend Architect</p>
+                    </div>
+                    <div class="profile-body">
+                        <div class="profile-skills">
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">AWS</span>
+                        </div>
+                        <p class="profile-experience">10 years of experience designing scalable backend systems and microservices architectures.</p>
+                        <div class="profile-actions">
+                            <a href="#" class="btn btn-outline">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-card fade-in">
+                    <div class="profile-header">
+                        <img src="https://picsum.photos/seed/engineer3/100/100.jpg" alt="Emily Rodriguez" class="profile-img">
+                        <div class="verified-badge">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h3 class="profile-name">Emily Rodriguez</h3>
+                        <p class="profile-title">Full Stack Developer</p>
+                    </div>
+                    <div class="profile-body">
+                        <div class="profile-skills">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">MongoDB</span>
+                        </div>
+                        <p class="profile-experience">5 years of experience developing end-to-end solutions for e-commerce and SaaS platforms.</p>
+                        <div class="profile-actions">
+                            <a href="#" class="btn btn-outline">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-card fade-in">
+                    <div class="profile-header">
+                        <img src="https://picsum.photos/seed/engineer4/100/100.jpg" alt="David Kim" class="profile-img">
+                        <div class="verified-badge">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h3 class="profile-name">David Kim</h3>
+                        <p class="profile-title">DevOps Engineer</p>
+                    </div>
+                    <div class="profile-body">
+                        <div class="profile-skills">
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Kubernetes</span>
+                            <span class="skill-tag">CI/CD</span>
+                            <span class="skill-tag">AWS</span>
+                        </div>
+                        <p class="profile-experience">8 years of experience implementing DevOps practices and optimizing cloud infrastructure.</p>
+                        <div class="profile-actions">
+                            <a href="#" class="btn btn-outline">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-card fade-in">
+                    <div class="profile-header">
+                        <img src="https://picsum.photos/seed/engineer5/100/100.jpg" alt="Jessica Taylor" class="profile-img">
+                        <div class="verified-badge">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h3 class="profile-name">Jessica Taylor</h3>
+                        <p class="profile-title">UI/UX Designer</p>
+                    </div>
+                    <div class="profile-body">
+                        <div class="profile-skills">
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Adobe XD</span>
+                            <span class="skill-tag">Prototyping</span>
+                            <span class="skill-tag">User Research</span>
+                        </div>
+                        <p class="profile-experience">6 years of experience creating intuitive user interfaces and experiences for web and mobile applications.</p>
+                        <div class="profile-actions">
+                            <a href="#" class="btn btn-outline">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-card fade-in">
+                    <div class="profile-header">
+                        <img src="https://picsum.photos/seed/engineer6/100/100.jpg" alt="Robert Wilson" class="profile-img">
+                        <div class="verified-badge">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h3 class="profile-name">Robert Wilson</h3>
+                        <p class="profile-title">Data Scientist</p>
+                    </div>
+                    <div class="profile-body">
+                        <div class="profile-skills">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Machine Learning</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">TensorFlow</span>
+                        </div>
+                        <p class="profile-experience">9 years of experience building predictive models and analyzing complex datasets for business insights.</p>
+                        <div class="profile-actions">
+                            <a href="#" class="btn btn-outline">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Matching Algorithm Section -->
+    <section id="algorithm" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>How Our Matching Algorithm Works</h2>
+            </div>
+            <div class="algorithm-content">
+                <p class="algorithm-intro">At DOXA, we've developed a sophisticated matching algorithm that goes beyond simple keyword matching to create meaningful connections between engineers and startups.</p>
+                
+                <div class="algorithm-steps">
+                    <div class="algorithm-step fade-in">
+                        <h3><i class="fas fa-code"></i> Skills Analysis</h3>
+                        <p>Our algorithm analyzes the specific skills required for each project and matches them with engineers who have verified expertise in those areas. We consider both primary and secondary skills to ensure a comprehensive match.</p>
+                    </div>
+                    
+                    <div class="algorithm-step fade-in">
+                        <h3><i class="fas fa-project-diagram"></i> Project Type Compatibility</h3>
+                        <p>We categorize projects by type, complexity, and industry, then match them with engineers who have relevant experience in similar projects. This ensures that engineers understand the unique challenges of each project type.</p>
+                    </div>
+                    
+                    <div class="algorithm-step fade-in">
+                        <h3><i class="fas fa-calendar-alt"></i> Availability Assessment</h3>
+                        <p>Our system takes into account the availability of engineers and the timeline of each project. We only match engineers who have confirmed availability for the duration of the project, ensuring timely delivery.</p>
+                    </div>
+                    
+                    <div class="algorithm-step fade-in">
+                        <h3><i class="fas fa-users"></i> Cultural Fit Evaluation</h3>
+                        <p>Beyond technical skills, we consider work style preferences, communication patterns, and cultural fit to ensure that engineers integrate seamlessly with startup teams.</p>
+                    </div>
+                    
+                    <div class="algorithm-step fade-in">
+                        <h3><i class="fas fa-brain"></i> Continuous Learning</h3>
+                        <p>Our algorithm learns from each successful match and project completion, continuously improving its recommendations based on feedback and outcomes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-form fade-in">
+                    <h3>Send Us a Message</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info fade-in">
+                    <h3>Get in Touch</h3>
+                    <p>Have questions about DOXA? Want to learn more about how we can help your startup or engineering career? Reach out to us!</p>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:info@doxa.com">info@doxa.com</a>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+1234567890">+1 (234) 567-890</a>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>123 Innovation Drive<br>San Francisco, CA 94105</p>
+                    </div>
+                    
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DOXA</h3>
+                    <p>Connecting verified engineers with startups that need their expertise for project-based work.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#jobs">Job Requests</a></li>
+                        <li><a href="#engineers">Engineers</a></li>
+                        <li><a href="#algorithm">How We Match</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>For Engineers</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Create Profile</a></li>
+                        <li><a href="#">Verification Process</a></li>
+                        <li><a href="#">Browse Jobs</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>For Startups</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Post a Job</a></li>
+                        <li><a href="#">Browse Engineers</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 DOXA. All rights reserved. | Designed by Akhilesh Ks</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification -->
+    <div id="notification" class="notification" role="alert">
+        <i class="fas fa-check-circle"></i>
+        <p id="notification-message">Message sent successfully!</p>
+    </div>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                    
+                    // Toggle hamburger animation
+                    const spans = hamburger.querySelectorAll('span');
+                    if (navMenu.classList.contains('active')) {
+                        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        spans[1].style.opacity = '0';
+                        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    } else {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
+                });
+            }
+            
+            // Close mobile menu when clicking on a link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    
+                    // Reset hamburger animation
+                    const spans = hamburger.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+            
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            if (navbar) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        navbar.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                    } else {
+                        navbar.style.boxShadow = 'none';
+                    }
+                });
+            }
+            
+            // Form submission
+            const contactForm = document.getElementById('contact-form');
+            const notification = document.getElementById('notification');
+            const notificationMessage = document.getElementById('notification-message');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // Basic validation
+                    if (!name || !email || !message) {
+                        showNotification('Please fill in all fields.', 'error');
+                        return;
+                    }
+                    
+                    // Email validation
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        showNotification('Please enter a valid email address.', 'error');
+                        return;
+                    }
+                    
+                    // In a real application, you would send this data to a server
+                    // For demo purposes, we'll just show a notification
+                    showNotification(`Thank you, ${name}! Your message has been sent successfully.`, 'success');
+                    
+                    // Reset form
+                    contactForm.reset();
+                });
+            }
+            
+            // Notification function
+            function showNotification(message, type = 'success') {
+                if (notification && notificationMessage) {
+                    notificationMessage.textContent = message;
+                    
+                    if (type === 'error') {
+                        notification.style.backgroundColor = '#e74c3c';
+                        notification.querySelector('i').className = 'fas fa-exclamation-circle';
+                    } else {
+                        notification.style.backgroundColor = 'var(--primary)';
+                        notification.querySelector('i').className = 'fas fa-check-circle';
+                    }
+                    
+                    notification.classList.add('show');
+                    
+                    // Hide notification after 5 seconds
+                    setTimeout(() => {
+                        notification.classList.remove('show');
+                    }, 5000);
+                }
+            }
+            
+            // Fade-in animation on scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = () => {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementBottom = element.getBoundingClientRect().bottom;
+                    
+                    if (elementTop < window.innerHeight - 100 && elementBottom > 0) {
+                        element.classList.add('visible');
+                    }
+                });
+            };
+            
+            // Run on page load and scroll
+            fadeInOnScroll();
+            window.addEventListener('scroll', fadeInOnScroll);
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const offsetTop = targetElement.offsetTop - 80; // Account for fixed navbar
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add active class to navigation items based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            const navItems = document.querySelectorAll('.nav-link');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href').slice(1) === current) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
